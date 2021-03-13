@@ -1,5 +1,5 @@
 class StringCalculator {
-    public int add(String numbers){
+    public int add(String numbers) throws Exception{
         // handling empty string
         if(numbers.equals("")) {
             return 0;
@@ -7,6 +7,10 @@ class StringCalculator {
 
         // handling case when string size is one
         if(numbers.length() == 1){
+
+            // handling negetive number
+            if(Integer.valueOf(numbers) < 0)
+                throw new Exception("negatives not allowed");
             return Integer.valueOf(numbers);
         }
 
@@ -20,6 +24,7 @@ class StringCalculator {
             numbers = numbers.split("\n")[1];
         }
 
+        System.out.println("Numbers string before split: " + numbers);
         // getting numbers
         String num[] = numbers.split(delimeter+"");
 
@@ -36,10 +41,15 @@ class StringCalculator {
         return ',';
     }
 
-    private int handleUnknownAmountOfNumbers(String num[]) {
+    private int handleUnknownAmountOfNumbers(String num[]) throws Exception{
         int sum = 0;
-        for(int i = 0 ; i < num.length ; i++) 
+        for(int i = 0 ; i < num.length ; i++){
+            int numTemp = Integer.valueOf(num[i]);
+            System.out.println("Number is : " + numTemp);
+            if(Integer.valueOf(num[i]) < 0) 
+                throw new Exception("negatives not allowed");
             sum = sum + Integer.valueOf(num[i]);
+        } 
         return sum;
     }
 }
