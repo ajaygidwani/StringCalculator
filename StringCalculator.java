@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 class StringCalculator {
     public int add(String numbers) throws Exception{
         // handling empty string
@@ -11,7 +12,7 @@ class StringCalculator {
             // handling negetive number
             int tempNum = Integer.valueOf(numbers);
             if(tempNum < 0)
-                throw new Exception("negatives not allowed");
+                throw new Exception("negatives not allowed " + tempNum);
             return tempNum;
         }
 
@@ -43,12 +44,22 @@ class StringCalculator {
 
     private int handleUnknownAmountOfNumbers(String num[]) throws Exception{
         int sum = 0;
+        ArrayList<String> list = new ArrayList<>();
         for(int i = 0 ; i < num.length ; i++){
             int numTemp = Integer.valueOf(num[i]);
             if(numTemp < 0) 
-                throw new Exception("negatives not allowed");
+                list.add(numTemp+"");
             sum = sum + numTemp;
         } 
+        // check if multiple negetive numbers present
+        if(list.size() > 1) {
+            String allNegativeNumbers = String.join(", ", list);
+            throw new Exception("negatives not allowed, all negative numbers are : " + allNegativeNumbers );
+        } else if(list.size() == 1){
+            throw new Exception("negatives not allowed " + list.get(0));
+        } else {
+
+        }
         return sum;
     }
 }
