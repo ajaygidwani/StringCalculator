@@ -14,21 +14,15 @@ class StringCalculator {
         String num[] = numbers.split(",");
 
         // handling unknown amount of numbers
-        if(num.length > 2) {
-            int result = handleUnknownAmountOfNumbers(num);
-            return result;
-        } 
-
-        // if string has two numbers
-        return Integer.valueOf(num[0]) + Integer.valueOf(num[1]); 
+        // remove checking length, because flow will reach here there are more than one number
+        return handleUnknownAmountOfNumbers(num);
+         
     }
 
     private int handleUnknownAmountOfNumbers(String num[]) {
         int sum = 0;
-        for(int i = 0 ; i < num.length ; i++) {
-            int number = Integer.valueOf(num[i]);
-            sum = sum + number;
-        }
+        for(int i = 0 ; i < num.length ; i++) 
+            sum = sum + Integer.valueOf(num[i]);
         return sum;
     }
 }
