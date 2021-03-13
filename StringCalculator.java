@@ -10,8 +10,11 @@ class StringCalculator {
             return Integer.valueOf(numbers);
         }
 
+        // handling new lines between numbers
+        String replaceNumbers = numbers.replace('\n', ',');
+
         // getting numbers
-        String num[] = numbers.split(",");
+        String num[] = replaceNumbers.split(",");
 
         // handling unknown amount of numbers
         // remove checking length, because flow will reach here there are more than one number
