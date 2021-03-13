@@ -12,5 +12,8 @@ public class Driver{
 
         // test case for point 3, handling \n between numbers
         System.out.println("test case of  \"1\\n2,3\"  "  +  "Result =>" + (sc.add("1\n2,3") == 6));
+
+        // test case for point 4, handling different delimeter
+        System.out.println("test case of  \" //;\\n1;2 \"  "  +  "Result =>" + (sc.add("//;\n1;2") == 3));
     }
 }

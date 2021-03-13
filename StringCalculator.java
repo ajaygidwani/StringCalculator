@@ -10,16 +10,31 @@ class StringCalculator {
             return Integer.valueOf(numbers);
         }
 
-        // handling new lines between numbers
-        String replaceNumbers = numbers.replace('\n', ',');
+        // handling different delimeters
+        // first check if numbers string contains different delimeter or not
+        char delimeter = checkForDiffDelimeter(numbers);
+        if(delimeter == ',') {
+            // no different delimeter
+            numbers = numbers.replace('\n', ',');
+        } else {
+            numbers = numbers.split("\n")[1];
+        }
 
         // getting numbers
-        String num[] = replaceNumbers.split(",");
+        String num[] = numbers.split(delimeter+"");
 
         // handling unknown amount of numbers
         // remove checking length, because flow will reach here there are more than one number
         return handleUnknownAmountOfNumbers(num);
          
+    }
+
+    private char checkForDiffDelimeter(String num){
+        if(num.charAt(0) == '/') {
+            return num.charAt(2);
+        } else {
+            return ',';
+        }
     }
 
     private int handleUnknownAmountOfNumbers(String num[]) {
