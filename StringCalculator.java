@@ -52,13 +52,9 @@ class StringCalculator {
             sum = sum + numTemp;
         } 
         // check if multiple negetive numbers present
-        if(list.size() > 1) {
+        if(!list.isEmpty()){
             String allNegativeNumbers = String.join(", ", list);
             throw new Exception("negatives not allowed, all negative numbers are : " + allNegativeNumbers );
-        } else if(list.size() == 1){
-            throw new Exception("negatives not allowed " + list.get(0));
-        } else {
-
         }
         return sum;
     }

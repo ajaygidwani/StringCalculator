@@ -17,7 +17,7 @@ public class Driver{
             System.out.println("test case of  \" //;\\n1;2 \" == 3 "  +  "Result =>" + (sc.add("//;\n1;2") == 3));
 
             // test case for point 5, handling case if number is negative
-            // System.out.println("test case of  \" 1,2,-3 \"  == should be exception "  +  "Result =>" + (sc.add("1,2,-3") == 3));
+            System.out.println("test case of  \" 1,2,-3 \"  == should be exception "  +  "Result =>" + (sc.add("1,2,-3") == 3));
 
             // test case for point 6, handling multiple negative numbers
             System.out.println("test case of  \" 1,2,-3,-4,-6 \"  == should be exception "  +  "Result =>" + (sc.add("1,2,-3,-4,-6") == 3));
