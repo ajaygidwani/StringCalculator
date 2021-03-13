@@ -14,7 +14,6 @@ class StringCalculator {
         String num[] = numbers.split(",");
 
         // if string has two numbers
-        int sum = Integer.valueOf(num[0]) + Integer.valueOf(num[1]); 
-        return sum;
+        return Integer.valueOf(num[0]) + Integer.valueOf(num[1]); 
     }
 }
