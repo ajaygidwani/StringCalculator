@@ -32,9 +32,8 @@ class StringCalculator {
     private char checkForDiffDelimeter(String num){
         if(num.charAt(0) == '/') {
             return num.charAt(2);
-        } else {
-            return ',';
         }
+        return ',';
     }
 
     private int handleUnknownAmountOfNumbers(String num[]) {
