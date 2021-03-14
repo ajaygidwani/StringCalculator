@@ -21,6 +21,7 @@ class StringCalculator {
             return handleCaseNumEqualsOne(numbers);
         }
 
+        // handling test case 4, different delimeter
         if(numbers.charAt(2) != '[' && numbers.charAt(0) == '/') {
             char delimeter = numbers.charAt(2);
             numbers = numbers.split('\n'+"")[1];
@@ -35,34 +36,18 @@ class StringCalculator {
             // no different delimeter
             numbers = numbers.replace('\n', ',');
             String num[] = numbers.split(','+"");
-            // System.out.println("Printing array  if comma: ");
-            // for(int j = 0 ; j < num.length ; j++)
-            //     System.out.println("Element is : " + num[j]);
             return handleUnknownAmountOfNumbers(num);
         } else {
             numbers = numbers.split("\n")[1];
             String splitPattern = getSplitPattern();
-            // System.out.println("Split pattern : " + splitPattern + " numbers string : " + numbers);
             String num[] = numbers.split(splitPattern);
-            // System.out.println("Printing array : if not comma");
-            // for(int j = 0 ; j < num.length ; j++)
-            //     System.out.println("Element is : "  + num[j]);
             return handleUnknownAmountOfNumbers(num);
-        }
-
-        // getting numbers
-        
-
-        // handling unknown amount of numbers
-        // remove checking length, because flow will reach here there are more than one number
-        
-         
+        }     
     }
 
     private String getSplitPattern() {
         String splitPattern = "";
         for(String str : listOfDelimeters) {
-            // System.out.println("Current string is : " + str);
             for(int i = 0 ; i < str.length() ; i++) {
                 if(str.charAt(i) == '*'){
                     splitPattern += "\\*";
@@ -86,6 +71,8 @@ class StringCalculator {
     }
 
     private boolean checkForDiffDelimeter(String num){
+
+        // using stack for fetching the delimeters of different type and having length more than one
         if(num.charAt(0) == '/') {
             listOfDelimeters.clear();
             for(int i = 2; num.charAt(i)!= '\n' ; i++ ) {
@@ -96,9 +83,7 @@ class StringCalculator {
                     String delim = "";
                     while(!stack.empty()){
                         char poppedElement = stack.pop();
-                        if(poppedElement == '[') {
-
-                        } else {
+                        if(poppedElement != '[') {
                             delim += poppedElement;
                         }
                     }
@@ -108,7 +93,6 @@ class StringCalculator {
                 }
             }
         }
-        // System.out.println("Printing list : " + listOfDelimeters);
         if(listOfDelimeters.size() > 0){
             return false;
         } else {
@@ -125,8 +109,7 @@ class StringCalculator {
             if(numTemp > 1000) continue;
             if(numTemp < 0) list.add(numTemp+"");
             sum = sum + numTemp;
-        } 
-
+        }
         // check if multiple negetive numbers present
         if(!list.isEmpty()){
             String allNegativeNumbers = String.join(", ", list);
