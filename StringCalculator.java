@@ -38,10 +38,16 @@ class StringCalculator {
             String num[] = numbers.split(','+"");
             return handleUnknownAmountOfNumbers(num);
         } else {
-            numbers = numbers.split("\n")[1];
-            String splitPattern = getSplitPattern();
-            String num[] = numbers.split(splitPattern);
-            return handleUnknownAmountOfNumbers(num);
+            if(numbers.indexOf('\n') != -1) {
+                // means numbers contains \n
+                numbers = numbers.split("\n")[1];
+                String splitPattern = getSplitPattern();
+                String num[] = numbers.split(splitPattern);
+                return handleUnknownAmountOfNumbers(num);
+            } else {
+                String num[] = numbers.split(",");
+                return handleUnknownAmountOfNumbers(num);
+            }
         }     
     }
 
