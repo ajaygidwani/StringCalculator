@@ -18,6 +18,7 @@ class StringCalculator {
 
             // handling negetive number
             int tempNum = Integer.valueOf(numbers);
+            if(tempNum > 1000) return 0;
             if(tempNum < 0)
                 throw new Exception("negatives not allowed " + tempNum);
             return tempNum;
@@ -54,6 +55,10 @@ class StringCalculator {
         ArrayList<String> list = new ArrayList<>();
         for(int i = 0 ; i < num.length ; i++){
             int numTemp = Integer.valueOf(num[i]);
+            // handling case 9, numbers bigger then 1000 should be ignored
+            if(numTemp > 1000) {
+                continue;
+            }
             if(numTemp < 0) 
                 list.add(numTemp+"");
             sum = sum + numTemp;
