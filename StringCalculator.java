@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 class StringCalculator {
+
+    private int addInvokeCounter = 0;
+
     public int add(String numbers) throws Exception{
+
+        // handling increment variable each time when add method called
+        addInvokeCounter += 1;
+
         // handling empty string
         if(numbers.equals("")) {
             return 0;
@@ -58,4 +65,9 @@ class StringCalculator {
         }
         return sum;
     }
+
+    public int getCalledCount() {
+        return this.addInvokeCounter;
+    }
+
 }
