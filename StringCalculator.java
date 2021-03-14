@@ -15,13 +15,7 @@ class StringCalculator {
 
         // handling case when string size is one
         if(numbers.length() == 1){
-
-            // handling negetive number
-            int tempNum = Integer.valueOf(numbers);
-            if(tempNum > 1000) return 0;
-            if(tempNum < 0)
-                throw new Exception("negatives not allowed " + tempNum);
-            return tempNum;
+            return handleCaseNumEqualsOne(numbers);
         }
 
         // handling different delimeters
@@ -43,6 +37,15 @@ class StringCalculator {
          
     }
 
+    private int handleCaseNumEqualsOne(String numbers) throws Exception{
+        // handling negetive number
+        int tempNum = Integer.valueOf(numbers);
+        if(tempNum > 1000) return 0;
+        if(tempNum < 0)
+            throw new Exception("negatives not allowed " + tempNum);
+        return tempNum;
+    }
+
     private char checkForDiffDelimeter(String num){
         if(num.charAt(0) == '/') {
             return num.charAt(2);
@@ -56,13 +59,11 @@ class StringCalculator {
         for(int i = 0 ; i < num.length ; i++){
             int numTemp = Integer.valueOf(num[i]);
             // handling case 9, numbers bigger then 1000 should be ignored
-            if(numTemp > 1000) {
-                continue;
-            }
-            if(numTemp < 0) 
-                list.add(numTemp+"");
+            if(numTemp > 1000) continue;
+            if(numTemp < 0) list.add(numTemp+"");
             sum = sum + numTemp;
         } 
+
         // check if multiple negetive numbers present
         if(!list.isEmpty()){
             String allNegativeNumbers = String.join(", ", list);
