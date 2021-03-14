@@ -16,6 +16,9 @@ public class Driver{
             // test case for point 4, handling different delimeter
             System.out.println("test case of  \" //;\\n1;2 \" == 3 "  +  "Result =>" + (sc.add("//;\n1;2") == 3));
 
+            // test case for point 7, count how many times add invoked
+            System.out.println("Number of times add method invoked: " + sc.getCalledCount());
+
             // test case for point 5, handling case if number is negative
             System.out.println("test case of  \" 1,2,-3 \"  == should be exception "  +  "Result =>" + (sc.add("1,2,-3") == 3));
 
